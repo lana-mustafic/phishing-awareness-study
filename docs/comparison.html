@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phishing Education: Real vs Fake</title>
+    <style>
+        :root {
+            --real-color: #4CAF50;
+            --fake-color: #f44336;
+            --quiz-color: #2196F3;
+        }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 20px;
+            line-height: 1.6; 
+        }
+        .comparison { 
+            display: flex; 
+            gap: 25px; 
+            margin: 30px 0; 
+            flex-wrap: wrap;
+        }
+        .column { 
+            flex: 1; 
+            min-width: 300px;
+            border: 1px solid #ddd; 
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .real { border-top: 4px solid var(--real-color); }
+        .fake { border-top: 4px solid var(--fake-color); }
+        h1 { text-align: center; color: #333; }
+        h2 { margin-top: 0; }
+        .tag { 
+            color: white; 
+            padding: 3px 10px; 
+            font-size: 14px; 
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .real-tag { background: var(--real-color); }
+        .fake-tag { background: var(--fake-color); }
+        .quiz-tag { background: var(--quiz-color); }
+        .red-flag { 
+            position: relative;
+            cursor: help;
+            border-bottom: 1px dashed #f44336;
+        }
+        .red-flag:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            background: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 100;
+            width: 200px;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+        }
+        .quiz {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        .quiz-option {
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .quiz-option:hover {
+            background: #f0f7ff;
+            border-color: var(--quiz-color);
+        }
+        @media (max-width: 768px) {
+            .column { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Phishing Awareness Training</h1>
+    <p style="text-align: center;">Based on real research: <strong>67%</strong> of hotel staff clicked similar phishing links in our study</p>
+    
+    <div class="comparison">
+        <!-- REAL Booking.com Example -->
+        <div class="column real">
+            <h2><span class="tag real-tag">LEGITIMATE</span> Real Booking.com Login</h2>
+            <img src="real_booking_sample.png" style="width:100%; border:1px solid #eee; margin-bottom:15px;">
+            
+            <h3>Security Indicators:</h3>
+            <ul>
+                <li>🔒 <strong>HTTPS</strong> encryption</li>
+                <li>🔍 Accurate domain: <code>booking.com</code></li>
+                <li>📜 Consistent copyright information</li>
+                <li>🛡️ No urgent action demands</li>
+            </ul>
+        </div>
+        
+        <!-- FAKE Phishing Example -->
+        <div class="column fake">
+            <h2><span class="tag fake-tag">PHISHING</span> Our Simulation</h2>
+            <img src="fake_login_screenshot.png" style="width:100%; border:1px solid #eee; margin-bottom:15px;">
+            
+            <h3>Red Flags (<span class="red-flag" data-tooltip="From your study: 4/6 employees missed these">hover</span>):</h3>
+            <ul>
+                <li><span class="red-flag" data-tooltip="Legitimate sites always use HTTPS">🚩 HTTP (no encryption)</span></li>
+                <li><span class="red-flag" data-tooltip="Misspelled domains are #1 phishing tactic">🚩 Fake domain: notbooking.com</span></li>
+                <li><span class="red-flag" data-tooltip="Creates false sense of urgency">🚩 "Immediate action required"</span></li>
+                <li><span class="red-flag" data-tooltip="Real portals use specific branding">🚩 Generic "Partner Portal"</span></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Interactive Quiz -->
+    <div class="quiz">
+        <h2><span class="tag quiz-tag">TEST YOUR KNOWLEDGE</span> Which is a phishing sign?</h2>
+        
+        <div class="quiz-option" onclick="checkAnswer(this, false)">🔒 HTTPS in address bar</div>
+        <div class="quiz-option" onclick="checkAnswer(this, true)">⚠️ "Your account will be suspended"</div>
+        <div class="quiz-option" onclick="checkAnswer(this, false)">📜 Consistent copyright year</div>
+        <div class="quiz-option" onclick="checkAnswer(this, true)">🌐 misspelled-domain.com</div>
+        
+        <div id="quiz-feedback" style="margin-top:15px; font-weight:bold;"></div>
+    </div>
+    
+    <script>
+        function checkAnswer(element, isCorrect) {
+            const feedback = document.getElementById('quiz-feedback');
+            if(isCorrect) {
+                element.style.background = "#e8f5e9";
+                element.style.borderColor = "var(--real-color)";
+                feedback.textContent = "✓ Correct! This is a common phishing tactic.";
+                feedback.style.color = "var(--real-color)";
+            } else {
+                element.style.background = "#ffebee";
+                element.style.borderColor = "var(--fake-color)";
+                feedback.textContent = "✗ Actually, this is a security GOOD sign!";
+                feedback.style.color = "var(--fake-color)";
+            }
+        }
+    </script>
+    
+    <div style="margin-top:30px; background:#f5f5f5; padding:15px; border-radius:5px; font-size:14px;">
+        <strong>Note:</strong> This educational comparison uses placeholder images. Your study data: 
+        <ul>
+            <li>📧 4/6 employees clicked the phishing link</li>
+            <li>🔑 3/6 attempted to enter credentials</li>
+            <li>🛡️ Only 2/6 identified the threat</li>
+        </ul>
+    </div>
+</body>
+</html>
