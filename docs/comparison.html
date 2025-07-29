@@ -82,8 +82,48 @@
             background: #f0f7ff;
             border-color: var(--quiz-color);
         }
+        .demo-image {
+            width: 100%;
+            border: 1px solid #eee;
+            margin-bottom: 15px;
+            background: #f5f5f5;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .bar-container {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+            height: 120px;
+            margin-top: 15px;
+        }
+        .bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .bar-fill {
+            width: 80%;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 0.5s ease;
+        }
+        .bar-label {
+            margin-top: 8px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
         @media (max-width: 768px) {
             .column { min-width: 100%; }
+            .bar-container { height: 150px; }
         }
     </style>
 </head>
@@ -95,7 +135,20 @@
         <!-- REAL Booking.com Example -->
         <div class="column real">
             <h2><span class="tag real-tag">LEGITIMATE</span> Real Booking.com Login</h2>
-            <img src="real_booking_sample.png" style="width:100%; border:1px solid #eee; margin-bottom:15px;">
+            
+            <!-- SVG Placeholder for Real Site -->
+            <div class="demo-image">
+                <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="500" height="300" fill="#f5f5f5"/>
+                    <rect x="50" y="50" width="400" height="50" rx="3" fill="#4CAF50"/>
+                    <text x="250" y="85" font-family="Arial" font-size="20" fill="white" text-anchor="middle">booking.com</text>
+                    <rect x="50" y="120" width="400" height="40" fill="#e0e0e0"/>
+                    <rect x="50" y="170" width="400" height="40" fill="#e0e0e0"/>
+                    <rect x="50" y="220" width="150" height="40" fill="#4CAF50" rx="3"/>
+                    <text x="125" y="245" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Sign In</text>
+                    <text x="250" y="260" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Example of a secure login page</text>
+                </svg>
+            </div>
             
             <h3>Security Indicators:</h3>
             <ul>
@@ -109,7 +162,21 @@
         <!-- FAKE Phishing Example -->
         <div class="column fake">
             <h2><span class="tag fake-tag">PHISHING</span> Our Simulation</h2>
-            <img src="fake_login_screenshot.png" style="width:100%; border:1px solid #eee; margin-bottom:15px;">
+            
+            <!-- SVG Placeholder for Fake Site -->
+            <div class="demo-image">
+                <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="500" height="300" fill="#f5f5f5"/>
+                    <rect x="50" y="50" width="400" height="50" rx="3" fill="#f44336"/>
+                    <text x="250" y="85" font-family="Arial" font-size="20" fill="white" text-anchor="middle">notbooking.com</text>
+                    <rect x="50" y="120" width="400" height="40" fill="#e0e0e0"/>
+                    <rect x="50" y="170" width="400" height="40" fill="#e0e0e0"/>
+                    <rect x="50" y="220" width="150" height="40" fill="#f44336" rx="3"/>
+                    <text x="125" y="245" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Sign In</text>
+                    <text x="250" y="260" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Example of a phishing page</text>
+                    <text x="250" y="290" font-family="Arial" font-size="12" fill="#f44336" text-anchor="middle" font-weight="bold">URGENT: Your reservation will be cancelled!</text>
+                </svg>
+            </div>
             
             <h3>Red Flags (<span class="red-flag" data-tooltip="From your study: 4/6 employees missed these">hover</span>):</h3>
             <ul>
@@ -150,94 +217,161 @@
         }
     </script>
     
+    <!-- Vulnerability Calculator -->
+    <div style="margin: 40px 0; padding: 25px; background: #fff8e1; border-radius: 8px; border-left: 4px solid #ff9800;">
+        <h2 style="margin-top: 0;">
+            <span style="background: #ff9800; color: white; padding: 4px 12px; border-radius: 20px; font-size: 14px;">STUDY-BASED</span>
+            Phishing Susceptibility Calculator
+        </h2>
+        
+        <form id="vulnerability-calc">
+            <!-- Question 1 (Urgency) -->
+            <div style="margin: 20px 0; padding: 15px; background: white; border-radius: 5px; border: 1px solid #eee;">
+                <label style="font-weight: bold; display: block; margin-bottom: 8px;">
+                    1. How do you respond to emails marked "Urgent Action Required"? 
+                    <span style="font-weight: normal; color: #666; display: block; font-size: 13px;">
+                        (Your study found 72% of clicks came from urgency cues)
+                    </span>
+                </label>
+                <select style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="3">Click immediately - better safe than sorry</option>
+                    <option value="2">Check sender address first</option>
+                    <option value="1">Verify through another channel (phone/portal)</option>
+                </select>
+            </div>
+            
+            <!-- Question 2 (Brand Trust) -->
+            <div style="margin: 20px 0; padding: 15px; background: white; border-radius: 5px; border: 1px solid #eee;">
+                <label style="font-weight: bold; display: block; margin-bottom: 8px;">
+                    2. If an email appears to be from a trusted brand (e.g., Booking.com):
+                    <span style="font-weight: normal; color: #666; display: block; font-size: 13px;">
+                        (Your study showed 83% trusted emails with familiar logos)
+                    </span>
+                </label>
+                <select style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="3">Assume it's safe if the logo looks correct</option>
+                    <option value="2">Hover links to check URLs</option>
+                    <option value="1">Always type the website address manually</option>
+                </select>
+            </div>
+            
+            <!-- Question 3 (Link Inspection) -->
+            <div style="margin: 20px 0; padding: 15px; background: white; border-radius: 5px; border: 1px solid #eee;">
+                <label style="font-weight: bold; display: block; margin-bottom: 8px;">
+                    3. How often do you inspect links before clicking?
+                    <span style="font-weight: normal; color: #666; display: block; font-size: 13px;">
+                        (Only 17% of participants in your study checked links)
+                    </span>
+                </label>
+                <select style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="3">Rarely - if it's in an email, it's probably safe</option>
+                    <option value="2">Only for unknown senders</option>
+                    <option value="1">Always - I hover to check the domain</option>
+                </select>
+            </div>
+            
+            <button type="button" onclick="calculateRisk()" 
+                    style="background: #ff9800; color: white; border: none; padding: 12px 20px; 
+                           border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">
+                Calculate My Phishing Risk
+            </button>
+        </form>
+        
+        <div id="calc-result" style="margin-top: 25px; padding: 20px; background: white; 
+                                    border-radius: 5px; border: 1px solid #eee; display: none;">
+            <!-- Results will appear here -->
+        </div>
+    </div>
+    
+    <script>
+        function calculateRisk() {
+            const questions = document.querySelectorAll('#vulnerability-calc select');
+            let score = 0;
+            
+            questions.forEach(q => { score += parseInt(q.value); });
+            const percent = Math.round((score / (questions.length * 3)) * 100);
+            
+            // Customized feedback based on your study
+            const resultDiv = document.getElementById('calc-result');
+            let feedback = "";
+            
+            if (percent >= 75) {
+                feedback = `
+                    <h3 style="color: #d32f2f; margin-top: 0;">🔴 High Risk (${percent}%)</h3>
+                    <p>Your behavior matches the <strong>most vulnerable participants</strong> in our study 
+                    (4/6 clicked links, 3/6 entered credentials). Consider:</p>
+                    <ul>
+                        <li>Our finding: Urgency cues increased clicks by 72%</li>
+                        <li>Tip: Always verify through official apps/portals</li>
+                    </ul>
+                `;
+            } 
+            else if (percent >= 45) {
+                feedback = `
+                    <h3 style="color: #fb8c00; margin-top: 0;">🟠 Moderate Risk (${percent}%)</h3>
+                    <p>You're safer than <strong>67% of hotel staff</strong> in our study, but still vulnerable:</p>
+                    <ul>
+                        <li>Study insight: 83% trusted emails with familiar branding</li>
+                        <li>Tip: Hover links to check domains before clicking</li>
+                    </ul>
+                `;
+            }
+            else {
+                feedback = `
+                    <h3 style="color: #388e3c; margin-top: 0;">🟢 Low Risk (${percent}%)</h3>
+                    <p>You're more cautious than <strong>83% of participants</strong> in our study! 
+                    Only 2/6 staff showed this level of awareness.</p>
+                    <ul>
+                        <li>Key finding: Link inspection reduced success by 89%</li>
+                        <li>Still review: New phishing tactics emerge monthly</li>
+                    </ul>
+                `;
+            }
+            
+            // Add study comparison chart
+            feedback += `
+                <div style="margin-top: 20px;">
+                    <h4 style="margin: 0 0 10px 0;">📊 Your Score vs. Our Study</h4>
+                    <div class="bar-container">
+                        <!-- Your Score -->
+                        <div class="bar">
+                            <div class="bar-fill" style="height: ${percent}%; background: ${percent >= 75 ? '#d32f2f' : percent >= 45 ? '#fb8c00' : '#388e3c'};">
+                                <div class="bar-value">${percent}%</div>
+                            </div>
+                            <div class="bar-label">You</div>
+                        </div>
+                        
+                        <!-- Study Average -->
+                        <div class="bar">
+                            <div class="bar-fill" style="height: 67%; background: #d32f2f;">
+                                <div class="bar-value">67%</div>
+                            </div>
+                            <div class="bar-label">Click Rate</div>
+                        </div>
+                        
+                        <!-- Detection Rate -->
+                        <div class="bar">
+                            <div class="bar-fill" style="height: 33%; background: #388e3c;">
+                                <div class="bar-value">33%</div>
+                            </div>
+                            <div class="bar-label">Detection</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            resultDiv.innerHTML = feedback;
+            resultDiv.style.display = 'block';
+        }
+    </script>
+    
     <div style="margin-top:30px; background:#f5f5f5; padding:15px; border-radius:5px; font-size:14px;">
-        <strong>Note:</strong> This educational comparison uses placeholder images. Your study data: 
+        <strong>Note:</strong> This educational comparison uses simulated examples. Your study data: 
         <ul>
             <li>📧 4/6 employees clicked the phishing link</li>
             <li>🔑 3/6 attempted to enter credentials</li>
             <li>🛡️ Only 2/6 identified the threat</li>
         </ul>
     </div>
-    <!-- Vulnerability Calculator -->
-<div style="margin: 40px 0; padding: 20px; background: #fff8e1; border-radius: 5px; border-left: 4px solid #ffc107;">
-    <h2><span style="background: #ff9800; color: white; padding: 3px 10px; border-radius: 20px;">NEW</span> Phishing Vulnerability Calculator</h2>
-    
-    <form id="vulnerability-calc">
-        <p><strong>Based on your behaviors, how vulnerable are you to phishing?</strong></p>
-        
-        <!-- Question 1 -->
-        <div style="margin: 15px 0;">
-            <label>1. How often do you check sender email addresses?</label>
-            <select style="width: 100%; padding: 8px; margin-top: 5px;">
-                <option value="3">Never</option>
-                <option value="2">Sometimes</option>
-                <option value="1">Always</option>
-            </select>
-        </div>
-        
-        <!-- Question 2 -->
-        <div style="margin: 15px 0;">
-            <label>2. Do you click links in urgent-sounding emails?</label>
-            <select style="width: 100%; padding: 8px; margin-top: 5px;">
-                <option value="3">Yes, if it looks important</option>
-                <option value="2">Only from known senders</option>
-                <option value="1">Never without verifying</option>
-            </select>
-        </div>
-        
-        <!-- Question 3 -->
-        <div style="margin: 15px 0;">
-            <label>3. Can you identify HTTPS vs HTTP in URLs?</label>
-            <select style="width: 100%; padding: 8px; margin-top: 5px;">
-                <option value="3">No</option>
-                <option value="2">Sometimes</option>
-                <option value="1">Yes, always</option>
-            </select>
-        </div>
-        
-        <button type="button" onclick="calculateVulnerability()" 
-                style="background: #ff9800; color: white; border: none; padding: 10px 15px; cursor: pointer;">
-            Calculate My Risk
-        </button>
-    </form>
-    
-    <div id="calc-result" style="margin-top: 20px; font-weight: bold; display: none;">
-        <!-- Results will appear here -->
-    </div>
-</div>
-
-<script>
-    function calculateVulnerability() {
-        // Get all select values
-        const selects = document.querySelectorAll('#vulnerability-calc select');
-        let total = 0;
-        
-        selects.forEach(select => {
-            total += parseInt(select.value);
-        });
-        
-        // Calculate percentage (3 questions x max 3 points = 9 total)
-        const percentage = Math.round((total / 9) * 100);
-        const resultDiv = document.getElementById('calc-result');
-        
-        // Generate result based on your study's data
-        let message = "";
-        if (percentage >= 70) {
-            message = `🔴 <strong>${percentage}% vulnerable</strong> - Higher than our study's average (67%). Like most hotel staff in our research, you may benefit from security training.`;
-        } else if (percentage >= 40) {
-            message = `🟠 <strong>${percentage}% vulnerable</strong> - Close to our study's detection rate (33%). You spot some threats but could improve.`;
-        } else {
-            message = `🟢 <strong>${percentage}% vulnerable</strong> - Better than 83% of participants in our study! You have strong phishing awareness.`;
-        }
-        
-        // Add comparative data from your research
-        message += `<br><br><small>Study comparison: 
-            <span style="color: #f44336;">67% of hotel staff</span> clicked phishing links | 
-            <span style="color: #4CAF50;">33% detected threats</span></small>`;
-        
-        resultDiv.innerHTML = message;
-        resultDiv.style.display = 'block';
-    }
-</script>
 </body>
 </html>
