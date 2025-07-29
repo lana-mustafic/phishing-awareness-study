@@ -1,0 +1,7 @@
+employee_id,department,clicked_link,attempted_login,flagged_as_phishing
+emp_001,reception,1,1,0
+emp_002,reception,1,1,0
+emp_003,reception,1,0,1
+emp_004,reception,0,0,1
+emp_005,reception,1,1,0
+emp_006,reception,0,0,1
