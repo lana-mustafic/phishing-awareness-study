@@ -3,40 +3,82 @@
 <head>
     <title>Booking Partner Portal (Demo Only)</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; }
-        .logo { height: 40px; margin-bottom: 20px; }
-        .warning { background: #fff3cd; padding: 10px; border-left: 3px solid #ffc107; margin: 20px 0; font-size: 14px; }
-        .demo-watermark { position: fixed; bottom: 10px; right: 10px; background: red; color: white; padding: 5px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 500px; 
+            margin: 50px auto; 
+            padding: 20px; 
+            border: 1px solid #ddd; 
+            background: #f9f9f9;
+        }
+        .warning { 
+            background: #fff3cd; 
+            padding: 10px; 
+            border-left: 3px solid #ffc107; 
+            margin: 20px 0; 
+            font-size: 14px; 
+        }
+        .demo-watermark { 
+            position: fixed; 
+            bottom: 10px; 
+            right: 10px; 
+            background: red; 
+            color: white; 
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+        .fake-logo {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%; 
+            padding: 10px; 
+            margin: 5px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #003580; 
+            color: white; 
+            padding: 12px 20px; 
+            border: none; 
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-    <!-- Fake Booking.com-style logo -->
-    <img src="https://via.placeholder.com/200x50?text=Fake+Booking+Portal" class="logo" alt="Fake Booking Portal">
+
+    <div class="fake-logo">
+        <svg width="200" height="50" viewBox="0 0 200 50">
+            <rect width="200" height="50" rx="3" fill="#003580"/>
+            <text x="100" y="32" font-family="Arial" font-size="18" font-weight="bold" 
+                  fill="white" text-anchor="middle">TravelPartner</text>
+            <text x="100" y="45" font-family="Arial" font-size="10" 
+                  fill="#85b6ff" text-anchor="middle">SECURE PORTAL DEMO</text>
+        </svg>
+    </div>
     
-    <!-- Demo warning banner -->
     <div class="warning">
-        ⚠️ <strong>DEMONSTRATION ONLY</strong> - This is a simulated phishing page for educational purposes.
+        ⚠️ <strong>DEMONSTRATION ONLY</strong> - This is a simulated phishing page for security training. No real data is collected.
     </div>
 
-    <!-- Fake login form -->
     <h2>Partner Sign In</h2>
-    <form onsubmit="alert('This is a demo - no data is collected'); return false;">
-        <div style="margin-bottom: 15px;">
-            <label>Email:</label><br>
-            <input type="email" style="width: 100%; padding: 8px;" placeholder="your@email.com">
-        </div>
+    <form onsubmit="alert('This is a demo - no credentials are collected'); return false;">
+        <label>Email:</label>
+        <input type="email" placeholder="your@email.com">
         
-        <div style="margin-bottom: 20px;">
-            <label>Password:</label><br>
-            <input type="password" style="width: 100%; padding: 8px;" placeholder="••••••••">
-        </div>
+        <label>Password:</label>
+        <input type="password" placeholder="••••••••">
         
-        <button type="submit" style="background: #003580; color: white; padding: 10px 15px; border: none; cursor: pointer;">
+        <button type="submit">
             Sign In
         </button>
     </form>
 
-    <!-- Visible watermark -->
-    <div class="demo-watermark">SECURITY DEMO</div>
+    <div class="demo-watermark">SECURITY TRAINING DEMO</div>
 </body>
 </html>
