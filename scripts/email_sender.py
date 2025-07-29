@@ -4,14 +4,14 @@ from email.mime.text import MIMEText
 
 def send_test_email():
     """Sends a simulated phishing email to yourself for testing"""
-    # Email content - MODIFY THIS TO MATCH YOUR STUDY
+    # Email content 
     html = """<html>
     <body>
         <p>Dear Hotel Staff,</p>
         <p>Your reservation #12345 requires verification:</p>
         <a href="http://localhost:5000/track_click">Click Here</a>
         <p style="color:#888;font-size:12px;">
-            This is a security training simulation from [Your Study Name].
+            This is a security training simulation from phishing-awareness-study.
         </p>
     </body>
     </html>"""
@@ -19,7 +19,7 @@ def send_test_email():
     msg = MIMEText(html, 'html')
     msg['Subject'] = 'Action Required: Reservation Verification'
     msg['From'] = 'training@notbooking.com'  # Fake sender
-    msg['To'] = 'your-real-email@example.com'  # CHANGE TO YOUR EMAIL
+    msg['To'] = 'llanamustafic@gmail.com'  # send to your email
 
     # Send using a TEST SMTP server (no real emails)
     with smtplib.SMTP('localhost', 1025) as server:
