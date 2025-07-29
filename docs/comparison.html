@@ -158,5 +158,86 @@
             <li>🛡️ Only 2/6 identified the threat</li>
         </ul>
     </div>
+    <!-- Vulnerability Calculator -->
+<div style="margin: 40px 0; padding: 20px; background: #fff8e1; border-radius: 5px; border-left: 4px solid #ffc107;">
+    <h2><span style="background: #ff9800; color: white; padding: 3px 10px; border-radius: 20px;">NEW</span> Phishing Vulnerability Calculator</h2>
+    
+    <form id="vulnerability-calc">
+        <p><strong>Based on your behaviors, how vulnerable are you to phishing?</strong></p>
+        
+        <!-- Question 1 -->
+        <div style="margin: 15px 0;">
+            <label>1. How often do you check sender email addresses?</label>
+            <select style="width: 100%; padding: 8px; margin-top: 5px;">
+                <option value="3">Never</option>
+                <option value="2">Sometimes</option>
+                <option value="1">Always</option>
+            </select>
+        </div>
+        
+        <!-- Question 2 -->
+        <div style="margin: 15px 0;">
+            <label>2. Do you click links in urgent-sounding emails?</label>
+            <select style="width: 100%; padding: 8px; margin-top: 5px;">
+                <option value="3">Yes, if it looks important</option>
+                <option value="2">Only from known senders</option>
+                <option value="1">Never without verifying</option>
+            </select>
+        </div>
+        
+        <!-- Question 3 -->
+        <div style="margin: 15px 0;">
+            <label>3. Can you identify HTTPS vs HTTP in URLs?</label>
+            <select style="width: 100%; padding: 8px; margin-top: 5px;">
+                <option value="3">No</option>
+                <option value="2">Sometimes</option>
+                <option value="1">Yes, always</option>
+            </select>
+        </div>
+        
+        <button type="button" onclick="calculateVulnerability()" 
+                style="background: #ff9800; color: white; border: none; padding: 10px 15px; cursor: pointer;">
+            Calculate My Risk
+        </button>
+    </form>
+    
+    <div id="calc-result" style="margin-top: 20px; font-weight: bold; display: none;">
+        <!-- Results will appear here -->
+    </div>
+</div>
+
+<script>
+    function calculateVulnerability() {
+        // Get all select values
+        const selects = document.querySelectorAll('#vulnerability-calc select');
+        let total = 0;
+        
+        selects.forEach(select => {
+            total += parseInt(select.value);
+        });
+        
+        // Calculate percentage (3 questions x max 3 points = 9 total)
+        const percentage = Math.round((total / 9) * 100);
+        const resultDiv = document.getElementById('calc-result');
+        
+        // Generate result based on your study's data
+        let message = "";
+        if (percentage >= 70) {
+            message = `🔴 <strong>${percentage}% vulnerable</strong> - Higher than our study's average (67%). Like most hotel staff in our research, you may benefit from security training.`;
+        } else if (percentage >= 40) {
+            message = `🟠 <strong>${percentage}% vulnerable</strong> - Close to our study's detection rate (33%). You spot some threats but could improve.`;
+        } else {
+            message = `🟢 <strong>${percentage}% vulnerable</strong> - Better than 83% of participants in our study! You have strong phishing awareness.`;
+        }
+        
+        // Add comparative data from your research
+        message += `<br><br><small>Study comparison: 
+            <span style="color: #f44336;">67% of hotel staff</span> clicked phishing links | 
+            <span style="color: #4CAF50;">33% detected threats</span></small>`;
+        
+        resultDiv.innerHTML = message;
+        resultDiv.style.display = 'block';
+    }
+</script>
 </body>
 </html>
