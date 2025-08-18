@@ -38,9 +38,24 @@ def analyze_data():
         else:
             print("\nℹ️ No data available for analysis")
 
+        # Add response time analysis if we have clicks
+        if total_clicks > 0:
+            analyze_response_times(df)
+
     except Exception as e:
         print(f"\n❌ Error during analysis: {str(e)}")
         print("Please check your clean_responses.csv format")
+
+def analyze_response_times(df):
+    """Analyze time between sending and clicking"""
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+    sent = df[df['action'] == 'sent'].set_index('tracking_id')
+    clicked = df[df['action'] == 'clicked'].set_index('tracking_id')
+    
+    merged = sent.join(clicked, rsuffix='_click', how='inner')
+    merged['response_time'] = merged['timestamp_click'] - merged['timestamp']
+    
+    print("\n⏱️ Average response time:", merged['response_time'].mean())
 
 if __name__ == "__main__":
     analyze_data()
