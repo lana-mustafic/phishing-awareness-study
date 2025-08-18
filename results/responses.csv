@@ -1,3 +1,5 @@
 email,action,timestamp
 test1@example.com,clicked,2024-08-20 10:00
-test2@example.com,ignored,2024-08-20 10:05
+test2@example.com,ignored,2024-08-20 10:052025-08-18T17:38:43.586125,your.email@example.com,sent,727308b8-8598-4ffe-847f-0e2cdd805a65
+2025-08-18T17:41:07.367834,your.email@example.com,sent,466e39cb-3a3a-4f1c-9895-3f518ed77306
+2025-08-18T17:45:32.822132,lanamustafic07@gmail.com,sent,c9f392dd-806e-4b5f-8d34-458c99324720
