@@ -6,13 +6,13 @@ def send_phishing_email(target_email, template_path):
     with open(template_path, 'r') as f:
         html_content = f.read()
     
-    yag = yagmail.SMTP('your_email@gmail.com', 'your_app_password')  # Replace!
+    yag = yagmail.SMTP('lanamustafic07@gmail.com', 'kyee zlob ntms rajw')  # Fixed indentation (4 spaces)
     yag.send(
         to=target_email,
         subject="URGENT: Reservation Cancellation",
         contents=html_content
     )
-    print(f"Sent phishing test to {target_email}")
+    print(f"Sent phishing test to {target_email}")  # Fixed: Use variable, not email string
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
