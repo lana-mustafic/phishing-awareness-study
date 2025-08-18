@@ -1,7 +1,7 @@
 # Phishing Awareness Study🔍
 
-**Academic Research Project | [Download Full Paper](phishing-study-cleanup
-/phishing_awareness_paper.pdf)**
+**Academic Research Project | [Download Full Paper](phishing_awareness_paper.pdf)**
+
 
 *Evaluating Phishing Email Awareness Among Non-IT Professionals in Hospitality Sector*
 
@@ -19,10 +19,8 @@ This repository contains both the **scientific paper** and **experimental toolki
 ## Research Components 🧩
 
 ### 1. Core Scientific Paper
-- `paper/` directory contains:
   - Final manuscript (PDF)
-  - Raw data (anonymized)
-  - Ethics approval documentation
+
 
 ### 2. Experimental Toolkit
 ```bash
